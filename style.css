@@ -1,0 +1,129 @@
+.wheel-cover {
+    max-width: 600px;
+    margin: auto;
+}
+
+:where(.ui-wheel-of-fortune) {
+    --_items: 11;
+    all: unset;
+    aspect-ratio: 1 / 1;
+    container-type: inline-size;
+    direction: ltr;
+    display: grid;
+    position: relative;
+    width: 100%;
+    &::after {
+        aspect-ratio: 1 / cos(30deg);
+        background-color: crimson;
+        clip-path: polygon(50% 100%, 100% 0, 0 0);
+        content: "";
+        height: 4cqi;
+        position: absolute;
+        place-self: start center;
+        scale: 1.6;
+    }
+
+    & > * {
+        position: absolute;
+    }
+
+    button {
+        aspect-ratio: 1 / 1;
+        /* background: hsla(0, 0%, 100%, 0.8); */
+        border: 0;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 5cqi;
+        font-weight: bold;
+        place-self: center;
+        width: 25cqi;
+    }
+
+    ul {
+        all: unset;
+        clip-path: inset(0 0 0 0 round 50%);
+        display: grid;
+        inset: 0;
+        place-content: center start;
+
+        li {
+            align-content: center;
+            aspect-ratio: 1 / calc(2 * tan(180deg / var(--_items)));
+            background: hsl(
+                calc(360deg / var(--_items) * calc(var(--_idx))),
+                100%,
+                75%
+            );
+            clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+            display: grid;
+            font-size: 5cqi;
+            grid-area: 1 / -1;
+            padding-left: 1.5ch;
+            rotate: calc(360deg / var(--_items) * calc(var(--_idx) - 1));
+            transform-origin: center right;
+            user-select: none;
+            width: 50cqi;
+
+            &:nth-of-type(1) {
+                --_idx: 1;
+                background: #440154;
+                color: white;
+            }
+            &:nth-of-type(2) {
+                --_idx: 2;
+                background: #482475;
+                color: white;
+            }
+            &:nth-of-type(3) {
+                --_idx: 3;
+                background: #414487;
+                color: white;
+            }
+            &:nth-of-type(4) {
+                --_idx: 4;
+                background: #355f8d;
+                color: white;
+            }
+            &:nth-of-type(5) {
+                --_idx: 5;
+                background: #2a788e;
+                color: white;
+            }
+            &:nth-of-type(6) {
+                --_idx: 6;
+                background: #21918c;
+            }
+            &:nth-of-type(7) {
+                --_idx: 7;
+                background: #22a884;
+            }
+            &:nth-of-type(8) {
+                --_idx: 8;
+                background: #44bf70;
+            }
+            &:nth-of-type(9) {
+                --_idx: 9;
+                background: #7ad151;
+            }
+            &:nth-of-type(10) {
+                --_idx: 10;
+                background: #bddf26;
+            }
+            &:nth-of-type(11) {
+                --_idx: 11;
+                background: #fde725;
+            }
+        }
+    }
+}
+
+* {
+    box-sizing: border-box;
+    font-family: Raleway, system-ui, sans-serif;
+}
+
+body {
+    padding: 5cqi;
+    background-color: #74ebd5;
+    background-image: linear-gradient(0deg, #74ebd5 0%, #9face6 100%);
+}
